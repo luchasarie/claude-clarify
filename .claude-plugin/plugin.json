@@ -1,10 +1,13 @@
 {
-  "name": "clarify",
-  "version": "0.2.0",
+  "name": "prompt-clarify",
+  "displayName": "Prompt Clarify",
+  "version": "0.3.0",
   "description": "Rewrite a rough request into a clearer prompt and put it back in the prompt box, unsent (/clarify or a trailing --clarify)",
   "author": { "name": "luchasarie", "url": "https://github.com/luchasarie" },
   "homepage": "https://github.com/luchasarie/claude-clarify",
   "repository": "https://github.com/luchasarie/claude-clarify",
+  "supportUrl": "https://github.com/luchasarie/claude-clarify/issues",
+  "privacyPolicyUrl": "https://github.com/luchasarie/claude-clarify/blob/main/PRIVACY.md",
   "license": "MIT",
   "keywords": ["prompt", "rewrite", "clarify", "prompt-engineering", "composer"],
   "userConfig": {

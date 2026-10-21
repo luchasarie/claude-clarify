@@ -1,6 +1,6 @@
 {
   "name": "claude-clarify",
   "owner": { "name": "luchasarie" },
-  "description": "clarify: rewrite a rough request into a clear prompt, left unsent in your prompt box",
-  "plugins": [{ "name": "clarify", "source": "./" }]
+  "description": "Prompt Clarify: rewrite a rough request into a clear prompt, left unsent in your prompt box",
+  "plugins": [{ "name": "prompt-clarify", "source": "./" }]
 }
