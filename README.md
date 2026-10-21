@@ -19,6 +19,95 @@ Before editing, find where the redirect is triggered and explain the cause.
 
 <p align="center"><img src="assets/before-after.png" alt="A rough draft ending in --clarify becomes a clearer draft in the prompt box, waiting for Enter" width="800"></p>
 
+## Real examples
+
+These are unedited outputs from the default model (`sonnet`), recorded on 2026-10-20. Rewrites differ a little from run to run, and you can edit any of them before sending.
+
+<details open>
+<summary><b>A slow export</b></summary>
+
+**Before**
+
+```
+/clarify the export button on the reports page is slow when theres lots of rows, make it faster but dont change the csv format
+```
+
+**After** (in your prompt box, unsent)
+
+```
+Investigate and fix the slow export on the reports page. When a report has many rows, clicking the export button takes too long. Make it noticeably faster without changing the CSV output.
+
+Requirements:
+- Keep the CSV format exactly as it is today: same columns, column order, headers, delimiters, quoting/escaping, encoding, and row ordering. A file exported after your change should be byte-for-byte identical to one exported before it for the same data.
+- Find the cause of the slowness first (for example, inefficient queries, loading all rows into memory, row-by-row processing, or blocking the request or UI) and base the fix on what you find, not on guesses.
+- Limit changes to what is needed for export performance. Do not refactor unrelated parts of the reports page.
+
+Deliverables:
+- A short explanation of the root cause and the changes you made.
+- A before/after comparison on a large dataset, using a rough timing or whatever measurement is practical.
+- Confirmation that the CSV output is unchanged, such as a diff of exports from before and after the change, or existing or new tests.
+
+If the fix would require a behavior change visible to users (such as moving the export to a background job with a download link), tell me before implementing it rather than assuming it is acceptable.
+```
+
+</details>
+
+<details>
+<summary><b>A one-line rename</b></summary>
+
+**Before**
+
+```
+/clarify rename getUser to fetchUser everywhere
+```
+
+**After**
+
+```
+Rename the function `getUser` to `fetchUser` everywhere in the codebase.
+
+Requirements:
+- Update the function definition and every call site, import, export, re-export, type reference, and mention in comments, docs, and tests.
+- Match whole identifiers only. Do not alter similarly named symbols such as `getUserById` or `getUsers`.
+- Check for non-obvious usages, such as string references, mocks, and dynamic access, and update them if they clearly refer to this function.
+- If renaming would conflict with an existing `fetchUser` symbol, stop and report the conflict rather than overwriting it.
+- Do not change any behavior beyond the rename.
+
+When finished, run the project's build, type-check, and tests if available, and summarize what changed and any places you were unsure about.
+```
+
+</details>
+
+<details>
+<summary><b>A flaky test, in Portuguese (it keeps your language)</b></summary>
+
+**Before**
+
+```
+/clarify o teste de login ta quebrando no CI as vezes, descobre pq e conserta sem desligar o teste
+```
+
+**After**
+
+```
+O teste de login está falhando de forma intermitente (flaky) no CI. Investigue a causa raiz e corrija o problema, sem desativar, pular ou remover o teste.
+
+O que fazer:
+1. Localize o teste de login e o histórico de falhas no CI (logs de execuções recentes que falharam e que passaram) para identificar o padrão: em quais condições ele falha, qual é a mensagem de erro e em qual etapa do teste.
+2. Levante hipóteses comuns para falhas intermitentes e verifique cada uma com evidências: condições de corrida ou esperas insuficientes (timeouts, elementos ainda não carregados), dependência de ordem de execução ou de estado compartilhado entre testes, dados de teste ou sessões/cookies que não são limpos, dependência de serviços externos ou rede, diferenças de ambiente entre local e CI (tempo, recursos, variáveis de ambiente, fuso horário), e execução paralela.
+3. Reproduza a falha, localmente ou repetindo o teste várias vezes, sempre que possível, para confirmar a causa antes de corrigir.
+4. Corrija a causa raiz (por exemplo, substituindo sleeps fixos por esperas explícitas condicionais, isolando o estado, ou tornando os dados determinísticos), em vez de mascarar o sintoma com retries ou aumentos arbitrários de timeout. Se um retry ou ajuste de timeout for realmente justificável, explique o motivo.
+5. Valide a correção rodando o teste repetidamente (por exemplo, dezenas de vezes) e, se possível, no CI, confirmando que ele deixou de falhar.
+
+Restrições:
+- Não desligue, pule, marque como ignorado nem remova o teste, nem enfraqueça suas asserções para fazê-lo passar.
+- Mantenha as mudanças restritas ao necessário para resolver o problema.
+
+Ao final, entregue um resumo com: a causa raiz identificada e as evidências, as alterações feitas e como a correção foi validada. Se não for possível determinar a causa com certeza, diga isso explicitamente e indique o que ainda falta investigar.
+```
+
+</details>
+
 ## Install
 
 At the prompt of a Claude Code terminal session:
@@ -64,7 +153,7 @@ One option: **model**, the model that does the rewrite. It can be `haiku`, `sonn
 claude plugin configure clarify
 ```
 
-Haiku is the fastest and cheapest. Opus rewrites best on long or tangled requests.
+Haiku is the fastest and cheapest.
 
 ## Privacy and cost
 
