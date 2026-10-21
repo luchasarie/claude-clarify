@@ -19,6 +19,12 @@ Before editing, find where the redirect is triggered and explain the cause.
 
 <p align="center"><img src="assets/before-after.png" alt="A rough draft ending in --clarify becomes a clearer draft in the prompt box, waiting for Enter" width="800"></p>
 
+## See it in 30 seconds
+
+https://github.com/user-attachments/assets/225b1011-0580-48cc-8c66-cc824b93d6ac
+
+Can't see the video? [Watch the 30-second demo](https://github.com/user-attachments/assets/225b1011-0580-48cc-8c66-cc824b93d6ac).
+
 ## Real examples
 
 These are unedited outputs from the default model (`sonnet`), recorded on 2026-10-20. Rewrites differ a little from run to run, and you can edit any of them before sending.
