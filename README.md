@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.png" alt="clarify: rough request in, clear prompt back in your prompt box, unsent" width="800"></p>
 
-# clarify
+# Prompt Clarify
 
 A Claude Code plugin that turns a rough request into a clear prompt. It puts the rewrite back in your prompt box **without sending it**, so you read it, edit it, and press Enter yourself.
 
@@ -113,7 +113,7 @@ Ao final, entregue um resumo com: a causa raiz identificada e as evidências, as
 At the prompt of a Claude Code terminal session:
 
 ```
-/plugin install clarify --marketplace luchasarie/claude-clarify
+/plugin install prompt-clarify --marketplace luchasarie/claude-clarify
 ```
 
 Answer `y` to add the marketplace, then pick a scope (user scope makes it work in every session). The command works right away, with no restart.
@@ -121,10 +121,12 @@ Answer `y` to add the marketplace, then pick a scope (user scope makes it work i
 From a shell:
 
 ```
-claude plugin install clarify --marketplace luchasarie/claude-clarify
+claude plugin install prompt-clarify --marketplace luchasarie/claude-clarify
 ```
 
 In the desktop app, where `/plugin` doesn't run: click **+** next to the prompt box, then **Plugins**, **Add marketplace** with `luchasarie/claude-clarify`, then **Add plugin**.
+
+Installed it as `clarify` before 0.3.0? The plugin was renamed to `prompt-clarify`. Run `claude plugin uninstall clarify`, then install it again with the command above. The `/clarify` command and the `--clarify` marker are unchanged.
 
 **Requirements:** a Claude Code build that supports plugin hooks modules (mods). It was tested on Claude Code 2.1.305. The mod API is in early access and can change between releases, so if it stops loading after a Claude Code update, please open an issue.
 
@@ -150,7 +152,7 @@ If the rewrite fails (timeout, API error, empty reply), your original draft goes
 One option: **model**, the model that does the rewrite. It can be `haiku`, `sonnet` (default) or `opus`. You set it when you install. To change it later, use the plugin's row in the config menu, or run:
 
 ```
-claude plugin configure clarify
+claude plugin configure prompt-clarify
 ```
 
 Haiku is the fastest and cheapest.
@@ -160,6 +162,8 @@ Haiku is the fastest and cheapest.
 - Your request goes to the model through your own Claude Code session, with your account's credentials. It counts toward your usage like any other request.
 - The plugin sends nothing anywhere else, stores nothing, and has no telemetry.
 - The request is sent as a JSON field with instructions to rewrite it and never act on it. Each rewrite is capped at 1,200 output tokens with a 30-second timeout.
+
+The full [privacy policy](PRIVACY.md) has the details.
 
 ## How it works
 
@@ -174,7 +178,7 @@ The system prompt tells the model to keep your language, names, paths, commands 
 ## Uninstall
 
 ```
-claude plugin uninstall clarify
+claude plugin uninstall prompt-clarify
 ```
 
 ## Development
