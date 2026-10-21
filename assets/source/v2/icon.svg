@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+<title id="title">clarify icon</title><desc id="desc">An original tangled line resolves into a straight line and an insertion caret. No lettering.</desc>
+<style>text { font-variant-ligatures: none; }</style>
+<g transform="scale(2)"><rect x="0" y="0" width="512" height="512" rx="0" fill="#16342D" /><rect x="8" y="8" width="496" height="496" rx="0" fill="none" stroke="#527768" stroke-width="2"/><g transform="" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M108 291 C54 249 82 171 144 169 C214 167 237 265 177 299 C117 333 89 267 133 237 C181 204 221 253 259 271 C278 280 291 280 314 280" stroke="#F4F4EB" stroke-width="26"/>
+<path d="M314 280H378" stroke="#BDE8CE" stroke-width="26"/>
+<rect x="414" y="196" width="28" height="168" rx="6" fill="#BDE8CE" stroke="none"/>
+</g></g>
+</svg>

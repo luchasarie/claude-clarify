@@ -1,0 +1,19 @@
+{
+  "name": "clarify",
+  "version": "0.2.0",
+  "description": "Rewrite a rough request into a clearer prompt and put it back in the prompt box, unsent (/clarify or a trailing --clarify)",
+  "author": { "name": "luchasarie", "url": "https://github.com/luchasarie" },
+  "homepage": "https://github.com/luchasarie/claude-clarify",
+  "repository": "https://github.com/luchasarie/claude-clarify",
+  "license": "MIT",
+  "keywords": ["prompt", "rewrite", "clarify", "prompt-engineering", "composer"],
+  "userConfig": {
+    "model": {
+      "type": "string",
+      "title": "Clarify model",
+      "description": "Model that rewrites the request",
+      "default": "sonnet",
+      "options": ["haiku", "sonnet", "opus"]
+    }
+  }
+}
